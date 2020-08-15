@@ -2304,6 +2304,18 @@ Naming/VariableNumber:
     - normalcase
     - non_integer
 
+# TODO: this should be removed after rubocop-rspec is updated to reflect changes from
+# https://github.com/rubocop-hq/rubocop/pull/8490
+RSpec/Rails/HttpStatus:
+  Description: Enforces use of symbolic or numeric value to describe HTTP status.
+  Enabled: true
+  EnforcedStyle: symbolic
+  SupportedStyles:
+    - numeric
+    - symbolic
+  VersionAdded: '1.23'
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/HttpStatus
+
 #################### Security ##############################
 
 Security/Eval:

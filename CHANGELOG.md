@@ -15,6 +15,7 @@
 ### Changes
 
 * [#8487](https://github.com/rubocop-hq/rubocop/pull/8487): Detect `<` and `>` as comparison operators in `Style/ConditionalAssignment` cop. ([@biinari][])
+* [#8044](https://github.com/rubocop-hq/rubocop/pull/8044): **(Breaking)** Change logic for cop department name computation. Cops inside deep namespaces (5 or more levels deep) now belong to departments with names that are calculated by joining module names starting from the third one with slashes as separators. For example, cop `Rubocop::Cop::Foo::Bar::Baz` now belongs to `Foo/Bar` department (previously it was `Bar`). Until third-party gems are updated, this might require you to update your `.rubocop.yml` project file with the new cop names. ([@dsavochkin][])
 
 ## 0.89.0 (2020-08-05)
 
