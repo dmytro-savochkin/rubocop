@@ -22,6 +22,7 @@ module RuboCop
     attr_reader :loaded_path
 
     def initialize(hash = {}, loaded_path = nil)
+      ConfigObsoletionExternal.new(hash).fix
       @loaded_path = loaded_path
       @for_cop = Hash.new do |h, cop|
         qualified_cop_name = Cop::Cop.qualified_cop_name(cop, loaded_path)

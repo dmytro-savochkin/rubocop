@@ -172,6 +172,24 @@ RSpec.describe RuboCop::Cop::Registry do
     it 'exposes a list of cops' do
       expect(registry.cops).to eql(cops)
     end
+
+    context 'with cops having the same inner-most module' do
+      let(:cops) do
+        [
+          RuboCop::Cop::Foo::Bar,
+          RuboCop::Cop::Baz::Foo::Bar
+        ]
+      end
+
+      before do
+        stub_const('RuboCop::Cop::Baz::Foo::Bar', Class.new(RuboCop::Cop::Base))
+        stub_const('RuboCop::Cop::Foo::Bar', Class.new(RuboCop::Cop::Base))
+      end
+
+      it 'exposes both cops' do
+        expect(registry.cops).to eql(cops)
+      end
+    end
   end
 
   it 'exposes the number of stored cops' do

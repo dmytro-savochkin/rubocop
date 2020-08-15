@@ -15,8 +15,11 @@ RSpec.describe 'RuboCop Project', type: :feature do
 
     let(:configuration_keys) { config.keys }
 
+    # TODO: %w[RSpec/Rails/HttpStatus] must be removed after rubocop-rspec is updated to reflect
+    # https://github.com/rubocop-hq/rubocop/pull/8490
     it 'has configuration for all cops' do
-      expect(configuration_keys).to match_array(%w[AllCops] + cop_names)
+      expect(configuration_keys)
+        .to match_array(%w[AllCops] + cop_names + %w[RSpec/Rails/HttpStatus])
     end
 
     it 'has a nicely formatted description for all cops' do
